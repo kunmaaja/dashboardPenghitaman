@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAMA — Video</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="topbar">
+        <a class="topbar-brand" href="dashboard.html"><div class="logo">H</div><div class="brand-text"><h2>HAMA</h2><p>Pembelajaran Interaktif</p></div></a>
+        <div class="topbar-user"><div class="user-chip"><div class="user-avatar">👤</div><span id="topbar-name">Siswa</span></div><button class="logout-btn" onclick="logout()">🚪</button></div>
+    </header>
+    <div class="body-wrap">
+        <nav class="sidebar">
+            <p class="sidebar-label">Navigasi</p>
+            <a href="dashboard.html" class="nav-item"><span class="nav-icon">🏠</span> Home</a>
+            <a href="materi.html" class="nav-item"><span class="nav-icon">📖</span> Materi</a>
+            <a href="video.html" class="nav-item active"><span class="nav-icon">▶️</span> Video</a>
+            <a href="latihan.html" class="nav-item"><span class="nav-icon">📋</span> Latihan</a>
+        </nav>
+        <main class="main">
+            <div class="page" id="page-video">
+                <p class="eyebrow">Video Pembelajaran</p>
+                <h1 class="page-title">Tonton & Pelajari</h1>
+                <div id="video-player-wrap" class="hidden">
+                    <div class="video-embed"><iframe id="video-iframe" allowfullscreen></iframe></div>
+                </div>
+                <div class="video-list" id="video-list"></div>
+            </div>
+        </main>
+    </div>
+    <script src="data.js"></script>
+    <script>renderVideos();</script>
+</body>
+</html>

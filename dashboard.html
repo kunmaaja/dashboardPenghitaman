@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAMA — Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="topbar">
+        <a class="topbar-brand" href="dashboard.html"><div class="logo">H</div><div class="brand-text"><h2>HAMA</h2><p>Pembelajaran Interaktif</p></div></a>
+        <div class="topbar-user"><div class="user-chip"><div class="user-avatar">👤</div><span id="topbar-name">Siswa</span></div><button class="logout-btn" onclick="logout()">🚪</button></div>
+    </header>
+    <div class="body-wrap">
+        <nav class="sidebar">
+            <p class="sidebar-label">Navigasi</p>
+            <a href="dashboard.html" class="nav-item active"><span class="nav-icon">🏠</span> Home</a>
+            <a href="materi.html" class="nav-item"><span class="nav-icon">📖</span> Materi</a>
+            <a href="video.html" class="nav-item"><span class="nav-icon">▶️</span> Video</a>
+            <a href="latihan.html" class="nav-item"><span class="nav-icon">📋</span> Latihan</a>
+        </nav>
+        <main class="main">
+            <div class="page" id="page-dashboard">
+                <p class="eyebrow">Dashboard</p>
+                <h1 class="page-title">Halo, <span id="dash-name" style="background:var(--fg);color:var(--bg);padding:2px 10px;border-radius:8px">Siswa</span></h1>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-label-row"><span class="stat-icon">🎯</span><span class="stat-lbl">Percobaan</span></div><div class="stat-val" id="stat-attempts">0</div></div>
+                    <div class="stat-card"><div class="stat-label-row"><span class="stat-icon">🏆</span><span class="stat-lbl">Skor Terbaik</span></div><div class="stat-val" id="stat-best">0%</div></div>
+                    <div class="stat-card"><div class="stat-label-row"><span class="stat-icon">📈</span><span class="stat-lbl">Terakhir</span></div><div class="stat-val" id="stat-last">—</div></div>
+                </div>
+                <div class="menu-list">
+                    <a class="menu-card" href="materi.html"><div class="menu-icon icon-materi">📖</div><div class="menu-info"><h3>Materi</h3><p>Pelajari teori pelayanan prima</p></div></a>
+                    <a class="menu-card" href="video.html"><div class="menu-icon icon-video">▶️</div><div class="menu-info"><h3>Video</h3><p>Tonton video pembelajaran</p></div></a>
+                    <a class="menu-card" href="latihan.html"><div class="menu-icon icon-latihan">📋</div><div class="menu-info"><h3>Latihan</h3><p>Uji pemahaman kamu</p></div></a>
+                </div>
+                <div class="kfooter"><div class="kfooter-inner"><div class="kfooter-icon">💡</div><div><p class="kfooter-lbl">Tahukah Kamu?</p><p class="kfooter-fact" id="kfact"></p></div></div></div>
+            </div>
+        </main>
+    </div>
+    <script src="data.js"></script>
+    <script>initDashboard();</script>
+</body>
+</html>

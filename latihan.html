@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HAMA — Latihan</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header class="topbar">
+        <a class="topbar-brand" href="dashboard.html"><div class="logo">H</div><div class="brand-text"><h2>HAMA</h2><p>Pembelajaran Interaktif</p></div></a>
+        <div class="topbar-user"><div class="user-chip"><div class="user-avatar">👤</div><span id="topbar-name">Siswa</span></div><button class="logout-btn" onclick="logout()">🚪</button></div>
+    </header>
+    <div class="body-wrap">
+        <nav class="sidebar">
+            <p class="sidebar-label">Navigasi</p>
+            <a href="dashboard.html" class="nav-item"><span class="nav-icon">🏠</span> Home</a>
+            <a href="materi.html" class="nav-item"><span class="nav-icon">📖</span> Materi</a>
+            <a href="video.html" class="nav-item"><span class="nav-icon">▶️</span> Video</a>
+            <a href="latihan.html" class="nav-item active"><span class="nav-icon">📋</span> Latihan</a>
+        </nav>
+        <main class="main">
+            <div class="page" id="page-latihan">
+                <div class="quiz-header">
+                    <p class="eyebrow">Latihan Soal</p>
+                    <div class="timer-wrap">⏱ <div class="timer-bar"><div class="timer-fill" id="timer-fill"></div></div><span class="timer-text" id="timer-text">30s</span></div>
+                </div>
+                <div class="q-card">
+                    <div class="q-badge-row"><div class="q-badge" id="q-num">1</div><div class="q-badge-info"><p id="q-meta">Soal 1</p></div></div>
+                    <p class="q-text" id="q-text"></p>
+                </div>
+                <div class="options" id="options"></div>
+                <div class="quiz-actions">
+                    <span class="feedback hidden" id="feedback"></span>
+                    <button class="btn btn-dark" id="btn-confirm" onclick="confirmAnswer()">Konfirmasi ✓</button>
+                    <button class="btn btn-dark hidden" id="btn-next-q" onclick="nextQuestion()">Lanjut →</button>
+                </div>
+            </div>
+            <div class="page hidden" id="page-skor">
+                <div class="score-page">
+                    <div class="score-trophy">🏆</div>
+                    <p class="eyebrow">Selesai</p>
+                    <div class="score-pct" id="score-pct">0%</div>
+                    <p id="score-detail"></p>
+                    <div class="score-actions"><button class="btn btn-outline" onclick="location.reload()">↺ Ulangi</button><a href="materi.html" class="btn btn-dark">📖 Materi</a></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="data.js"></script>
+    <script>startQuiz();</script>
+</body>
+</html>
