@@ -1,57 +1,57 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HAMA — Portal Masuk</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAMA — Portal Masuk</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div id="page-portal">
-        <div class="portal-wrap">
-            <div class="portal-hero">
-                <img src="gambarguwa.jpeg"/>
-                <div class="portal-hero-overlay"></div>
-                <div class="portal-hero-text">
-                    <div class="portal-hero-logo">H</div>
-                    <h1>HAMA</h1>
-                    <p>Media Penghitaman Hyperaktif — Platform untuk menghitamkan muwani menjaadi lebih gelap.</p>
-                </div>
-            </div>
-            <div class="portal-form-side">
-                <div class="portal-form-inner">
-                    <p class="eyebrow">Portal Masuk</p>
-                    <h2 class="page-title">Selamat Datang</h2>
-                    <p class="page-sub" style="margin-bottom:32px">Masukkan data diri untuk mulai belajar.</p>
-                    <form id="portal-form">
-                        <div class="form-group">
-                            <label class="form-label" for="inp-name">Nama</label>
-                            <input class="form-input" id="inp-name" type="text" placeholder="Masukkan nama lengkap" required />
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label" for="inp-absen">No. Absen</label>
-                            <input class="form-input" id="inp-absen" type="number" placeholder="Masukkan no. absen" required />
-                        </div>
-                        <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;height:48px;font-size:14px">
-                            Masuk →
-                        </button>
-                    </form>
-                    <p class="portal-footer">Platform Pembelajaran Interaktif · HAMA</p>
-                </div>
-            </div>
+  <div id="page-portal">
+    <div class="portal-wrap">
+      <div class="portal-hero">
+        <img src="gambarguwa.jpeg" alt="HAMA Background"/>
+        <div class="portal-hero-overlay"></div>
+        <div class="portal-hero-text">
+          <div class="portal-hero-logo">H</div>
+          <h1>HAMA</h1>
+          <p>Media Pembelajaran Interaktif — Platform untuk mendalami materi peralatan kantor.</p>
         </div>
+      </div>
+      <div class="portal-form-side">
+        <div class="portal-form-inner">
+          <p class="eyebrow">Portal Masuk</p>
+          <h2 class="page-title">Selamat Datang</h2>
+          <p class="page-sub" style="margin-bottom:36px">Masukkan data diri untuk mulai belajar.</p>
+          <form id="portal-form">
+            <div class="form-group">
+              <label class="form-label" for="inp-name">Nama Lengkap</label>
+              <input class="form-input" id="inp-name" type="text" placeholder="Masukkan nama lengkap" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="inp-absen">No. Absen</label>
+              <input class="form-input" id="inp-absen" type="number" placeholder="Masukkan no. absen" required />
+            </div>
+            <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;height:52px;font-size:14px">
+              Masuk →
+            </button>
+          </form>
+          <p class="portal-footer">Platform Pembelajaran Interaktif · HAMA</p>
+        </div>
+      </div>
     </div>
-    <script src="data.js"></script>
-    <script>
-        document.getElementById('portal-form').addEventListener('submit', e => {
-            e.preventDefault();
-            const name = document.getElementById('inp-name').value.trim();
-            const absen = document.getElementById('inp-absen').value.trim();
-            if (!name || !absen) return;
-            localStorage.setItem('hamaUser', JSON.stringify({ name, absen }));
-            window.location.href = 'dashboard.html';
-        });
-    </script>
+  </div>
+  <script src="data.js"></script>
+  <script>
+    document.getElementById('portal-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('inp-name').value.trim();
+      const absen = document.getElementById('inp-absen').value.trim();
+      if (!name || !absen) return;
+      localStorage.setItem('hamaUser', JSON.stringify({ name, absen }));
+      window.location.href = 'dashboard.html';
+    });
+  </script>
 </body>
 </html>
