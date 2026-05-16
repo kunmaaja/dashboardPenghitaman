@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HAMA — Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -38,6 +39,9 @@
             <div>
               <p class="eyebrow">Dashboard</p>
               <h1 class="page-title">Halo, <span id="dash-name">Siswa</span> 👋</h1>
+              <p style="color: #ffffff; font-size: 16px; margin-top: -10px; margin-bottom: 24px; font-weight: 500;">
+                No. Absen: <span id="dash-absen" style="color: #ffffff;">-</span>
+              </p>
               <p class="page-sub">Selamat datang kembali. Pilih menu di bawah untuk melanjutkan belajar.</p>
               <div class="dash-badge">✨ Semangat belajar hari ini!</div>
             </div>
@@ -71,7 +75,7 @@
             <div class="kfooter-inner">
               <div class="kfooter-icon">💡</div>
               <div>
-                <p class="kfooter-lbl">Tahukah Kamu?</p>
+                <p class="kfooter-lbl">Smart office, better productivity</p>
                 <p class="kfooter-fact" id="kfact"></p>
               </div>
             </div>
@@ -87,7 +91,6 @@
     const toggleBtn = document.getElementById('sidebar-toggle');
     const COLLAPSED_KEY = 'hamaSidebarCollapsed';
 
-    // Logika Auto-collapse saat layar kecil
     function checkScreenSize() {
       if (window.innerWidth <= 768) {
         sidebar.classList.add('collapsed');
@@ -110,10 +113,35 @@
       }
     });
 
-    // Dashboard
-    document.getElementById('dash-name').textContent = typeof userData !== 'undefined' && userData ? userData.name : 'Siswa';
     if(typeof facts !== 'undefined') {
       document.getElementById('kfact').textContent = facts[Math.floor(Math.random() * facts.length)];
+    }
+
+    const savedUserStr = localStorage.getItem('hamaUser');
+    let userName = 'Siswa';
+    let userAbsen = '-';
+
+    if (savedUserStr) {
+      const savedUser = JSON.parse(savedUserStr);
+      userName = savedUser.name || 'Siswa';
+      userAbsen = savedUser.absen || '-';
+    } else if (typeof userData !== 'undefined' && userData) {
+      userName = userData.name || 'Siswa';
+      userAbsen = userData.absen || '-';
+    }
+
+    const dashNameEl = document.getElementById('dash-name');
+    if (dashNameEl) dashNameEl.textContent = userName;
+
+    const dashAbsenEl = document.getElementById('dash-absen');
+    if (dashAbsenEl) dashAbsenEl.textContent = userAbsen;
+
+    const topbarNameEl = document.getElementById('topbar-name');
+    if (topbarNameEl) topbarNameEl.textContent = userName;
+    
+    function logout() {
+      localStorage.removeItem('hamaUser');
+      window.location.href = 'index.html';
     }
   </script>
 </body>
