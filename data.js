@@ -1,5 +1,5 @@
 const chapters = [
-  // ── BAB 1: Konsep Dasar Peralatan Kantor ───────────────────────────────────
+  //BAB1
   { id:'ch1', title:'Konsep Dasar Peralatan Kantor', slides:[
     {
       title:'Konsep Dasar Peralatan Kantor',
@@ -35,7 +35,7 @@ const chapters = [
     }
   ]},
 
-  // ── BAB 2: Jenis-Jenis Peralatan Kantor ───────────────────────────────────
+  //BAB2
   { id:'ch2', title:'Jenis-Jenis Peralatan Kantor', slides:[
     {
       title:'JENIS-JENIS PERALATAN KANTOR',
@@ -71,7 +71,7 @@ const chapters = [
     }
   ]},
 
-  // ── BAB 3: Penggunaan dan Pengelolaan Peralatan Kantor ──────────────────────
+  //BAB3
   { id:'ch3', title:'Penggunaan & Pengelolaan', slides:[
     {
       title:'PENGGUNAAN DAN PENGELOLAAN PERALATAN KANTOR',
@@ -107,7 +107,7 @@ const chapters = [
     }
   ]},
 
-  // ── BAB 4: Mesin dan Peralatan Kantor Modern ──────────────────────────────
+  //BAB4
   { id:'ch4', title:'Peralatan Kantor Modern', slides:[
     {
       title:'MESIN DAN PERALATAN KANTOR MODERN',
@@ -187,18 +187,12 @@ const videos = [
 ];
 
 const facts = [
-  "bagian ini bebas ae diisi mau motivasi atau fakta menarik kaata kata hari ini atau apalah bebas, iki cuma ben gk kosong bgt wae halaman dashboardnya",
-  "bagian ini bebas ae diisi mau motivasi atau fakta menarik kaata kata hari ini atau apalah bebas, iki cuma ben gk kosong bgt wae halaman dashboardnya",
-  "bagian ini bebas ae diisi mau motivasi atau fakta menarik kaata kata hari ini atau apalah bebas, iki cuma ben gk kosong bgt wae halaman dashboardnya",
-  "bagian ini bebas ae diisi mau motivasi atau fakta menarik kaata kata hari ini atau apalah bebas, iki cuma ben gk kosong bgt wae halaman dashboardnya",
-  "bagian ini bebas ae diisi mau motivasi atau fakta menarik kaata kata hari ini atau apalah bebas, iki cuma ben gk kosong bgt wae halaman dashboardnya"
+  "Perkantoran yang memanfaatkan teknologi dan sistem kerja modern dapat meningkatkan produktivitas kerja menjadi lebih baik."
 ];
 
-// --- LOGIKA GLOBAL ---
 let userData = JSON.parse(localStorage.getItem('hamaUser') || 'null');
 let progress = JSON.parse(localStorage.getItem('hamaProgress') || '{"scores":[],"done":[]}');
 
-// Cek Login
 if (!userData && !window.location.href.includes('index.html')) {
     window.location.href = 'index.html';
 } else if (userData) {
@@ -214,7 +208,6 @@ function logout() {
     window.location.href = 'index.html';
 }
 
-// --- FUNGSI HALAMAN ---
 function initDashboard() {
     document.getElementById('dash-name').textContent = userData.name;
     document.getElementById('kfact').textContent = facts[Math.floor(Math.random() * facts.length)];
@@ -226,7 +219,6 @@ function initDashboard() {
     }
 }
 
-// --- MATERI ---
 let chapterIdx = 0, slideIdx = 0;
 function renderMateri() {
     const wrap = document.getElementById('chapter-tabs');
@@ -249,7 +241,6 @@ function renderMateri() {
 function nextSlide() { if(slideIdx < chapters[chapterIdx].slides.length - 1) { slideIdx++; renderMateri(); } }
 function prevSlide() { if(slideIdx > 0) { slideIdx--; renderMateri(); } }
 
-// --- LATIHAN ---
 let qCur = 0, qScore = 0, qConfirmed = false;
 function startQuiz() {
     const q = questions[qCur];
@@ -316,7 +307,6 @@ function finishQuiz() {
     }
 }
 
-// --- VIDEO ---
 let activeVideoId = null;
 function renderVideos() {
     const list = document.getElementById('video-list');
