@@ -6,24 +6,72 @@
   <title>HAMA — Portal Masuk</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    #page-portal {
+      background: url('gambarduw.jpeg') no-repeat center center;
+      background-size: cover;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    #page-portal::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(10, 30, 61, 0.65); 
+      z-index: 1;
+    }
+
+    .portal-wrap {
+      position: relative;
+      z-index: 2;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .portal-form-side {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+      padding: 48px 40px;
+      background: var(--card);
+    }
+
+    .brand-centered {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .brand-centered .portal-hero-logo {
+      margin: 0 auto 12px;
+      width: 52px; height: 52px; font-size: 26px;
+    }
+    .brand-centered h1 {
+      font-family: var(--serif);
+      font-size: 32px;
+      color: var(--fg);
+    }
+    .text-center {
+      text-align: center;
+      justify-content: center;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
   <div id="page-portal">
     <div class="portal-wrap">
-      <div class="portal-hero">
-        <img src="gambarguwa.jpeg" alt="HAMA Background"/>
-        <div class="portal-hero-overlay"></div>
-        <div class="portal-hero-text">
-          <div class="portal-hero-logo">H</div>
-          <h1>HAMA</h1>
-          <p>Media Pembelajaran Interaktif — Platform untuk mendalami materi peralatan kantor.</p>
-        </div>
-      </div>
+      
       <div class="portal-form-side">
         <div class="portal-form-inner">
-          <p class="eyebrow">Portal Masuk</p>
-          <h2 class="page-title">Selamat Datang</h2>
-          <p class="page-sub" style="margin-bottom:36px">Masukkan data diri untuk mulai belajar.</p>
+          <h2 class="page-title text-center">Selamat Datang</h2>
+          <p class="page-sub text-center" style="margin-bottom:36px; margin-left: auto; margin-right: auto;">
+            Masukkan data diri untuk mulai belajar.
+          </p>
+
           <form id="portal-form">
             <div class="form-group">
               <label class="form-label" for="inp-name">Nama Lengkap</label>
@@ -33,15 +81,18 @@
               <label class="form-label" for="inp-absen">No. Absen</label>
               <input class="form-input" id="inp-absen" type="number" placeholder="Masukkan no. absen" required />
             </div>
-            <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;height:52px;font-size:14px">
+            <button type="submit" class="btn btn-dark" style="width:100%;justify-content:center;height:52px;font-size:14px;border-radius:12px;">
               Masuk →
             </button>
           </form>
+          
           <p class="portal-footer">Platform Pembelajaran Interaktif · HAMA</p>
         </div>
       </div>
+
     </div>
   </div>
+  
   <script src="data.js"></script>
   <script>
     document.getElementById('portal-form').addEventListener('submit', e => {
