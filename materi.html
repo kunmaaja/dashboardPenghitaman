@@ -1,47 +1,85 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HAMA — Materi</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HAMA — Materi</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <header class="topbar">
-        <a class="topbar-brand" href="dashboard.html"><div class="logo">H</div><div class="brand-text"><h2>HAMA</h2><p>Pembelajaran Interaktif</p></div></a>
-        <div class="topbar-user"><div class="user-chip"><div class="user-avatar">👤</div><span id="topbar-name">Siswa</span></div><button class="logout-btn" onclick="logout()">🚪</button></div>
-    </header>
-    <div class="body-wrap">
-        <nav class="sidebar">
-            <p class="sidebar-label">Navigasi</p>
-            <a href="dashboard.html" class="nav-item"><span class="nav-icon">🏠</span> Home</a>
-            <a href="materi.html" class="nav-item active"><span class="nav-icon">📖</span> Materi</a>
-            <a href="video.html" class="nav-item"><span class="nav-icon">▶️</span> Video</a>
-            <a href="latihan.html" class="nav-item"><span class="nav-icon">📋</span> Latihan</a>
-        </nav>
-        <main class="main">
-            <div class="page" id="page-materi">
-                <p class="eyebrow">Materi Pembelajaran</p>
-                <h1 class="page-title">Pelayanan Prima</h1>
-                <div class="chapter-tabs" id="chapter-tabs"></div>
-                <div class="progress-row">
-                    <div class="progress-bar"><div class="progress-fill" id="materi-prog"></div></div>
-                    <span class="prog-num" id="materi-prog-num"></span>
-                </div>
-                <div class="slide-wrap">
-                    <div class="slide-card" id="slide-card">
-                        <p class="slide-meta" id="slide-meta"></p>
-                        <h2 class="slide-title" id="slide-title"></h2>
-                        <p class="slide-body" id="slide-body"></p>
-                    </div>
-                </div>
-                <div class="nav-row">
-                    <button class="btn btn-outline" id="btn-prev" onclick="prevSlide()">← Kembali</button>
-                    <button class="btn btn-dark" id="btn-next" onclick="nextSlide()">Lanjut →</button>
-                </div>
+  <div class="app-layout">
+    <nav class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a class="topbar-brand" href="dashboard.html">
+          <div class="logo">H</div>
+          <div class="brand-text"><h2>HAMA</h2><p>Pembelajaran Interaktif</p></div>
+        </a>
+        <button class="sidebar-toggle" id="sidebar-toggle" title="Lipat/Buka Sidebar">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <p class="sidebar-label">Navigasi</p>
+      <a href="dashboard.html" class="nav-item"><span class="nav-icon">🏠</span><span class="nav-label"> Home</span></a>
+      <a href="materi.html" class="nav-item active"><span class="nav-icon">📖</span><span class="nav-label"> Materi</span></a>
+      <a href="video.html" class="nav-item"><span class="nav-icon">▶️</span><span class="nav-label"> Video</span></a>
+      <a href="latihan.html" class="nav-item"><span class="nav-icon">📋</span><span class="nav-label"> Latihan</span></a>
+    </nav>
+
+    <div class="main-wrapper">
+      <header class="topbar">
+        <div class="topbar-user">
+          <div class="user-chip"><div class="user-avatar">👤</div><span id="topbar-name">Siswa</span></div>
+          <button class="logout-btn" onclick="logout()">🚪</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <div class="page" id="page-materi">
+          <p class="eyebrow">Materi Pembelajaran</p>
+          <h1 class="page-title">Peralatan Kantor</h1>
+          <div class="chapter-tabs" id="chapter-tabs"></div>
+          <div class="progress-row">
+            <div class="progress-bar"><div class="progress-fill" id="materi-prog"></div></div>
+            <span class="prog-num" id="materi-prog-num"></span>
+          </div>
+          <div class="slide-wrap">
+            <div class="slide-card" id="slide-card">
+              <p class="slide-meta" id="slide-meta"></p>
+              <h2 class="slide-title" id="slide-title"></h2>
+              <p class="slide-body" id="slide-body"></p>
             </div>
-        </main>
+          </div>
+          <div class="nav-row">
+            <button class="btn btn-outline" id="btn-prev" onclick="prevSlide()">← Kembali</button>
+            <button class="btn btn-dark" id="btn-next" onclick="nextSlide()">Lanjut →</button>
+          </div>
+        </div>
+      </main>
     </div>
-    <script src="data.js"></script>
-    <script>renderMateri();</script>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const toggleBtn = document.getElementById('sidebar-toggle');
+    const COLLAPSED_KEY = 'hamaSidebarCollapsed';
+
+    function checkScreenSize() {
+      if (window.innerWidth <= 768) {
+        sidebar.classList.add('collapsed');
+      } else {
+        if (localStorage.getItem(COLLAPSED_KEY) === '1') sidebar.classList.add('collapsed');
+        else sidebar.classList.remove('collapsed');
+      }
+    }
+    window.addEventListener('resize', checkScreenSize);
+    checkScreenSize();
+
+    toggleBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('collapsed');
+      if (window.innerWidth > 768) localStorage.setItem(COLLAPSED_KEY, sidebar.classList.contains('collapsed') ? '1' : '0');
+    });
+
+    if(typeof renderMateri === 'function') renderMateri();
+  </script>
 </body>
 </html>
